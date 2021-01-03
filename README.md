@@ -6,6 +6,6 @@ Operations :
  - Copy a matrix
  - Access to a matrix element (both in reading and writing)
  - Addition, Subtraction, Multiplication, Division 
- - Get the dimensions of the matriw
+ - Get the dimensions of the matrix
  - Display a matrix
  - Extract a specific row or column

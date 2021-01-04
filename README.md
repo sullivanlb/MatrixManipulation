@@ -9,3 +9,4 @@ Operations :
  - Get the dimensions of the matrix
  - Display a matrix
  - Extract a specific row or column
+ - Transpose a matrix

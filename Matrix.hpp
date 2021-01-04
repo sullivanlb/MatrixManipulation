@@ -9,10 +9,8 @@ class Matrix{
 
     public:
         Matrix() = delete;
+        Matrix(Matrix const &m1) = default;
         Matrix(int const nbColumn, int const nbRow) noexcept;
-        Matrix copy(Matrix const m1);
-        int getElement(int const column, int const row);
-        int setElement(int const column, int const row, int const value);
         int getDimension();
         int* getColumn(int const column);
         int* getRow(int const row);

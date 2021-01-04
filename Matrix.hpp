@@ -9,7 +9,7 @@ class Matrix{
 
     public:
         Matrix() = delete;
-        Matrix(int const nbColumn, int const nbRow);
+        Matrix(int const nbColumn, int const nbRow) noexcept;
         Matrix copy(Matrix const m1);
         int getElement(int const column, int const row);
         int setElement(int const column, int const row, int const value);
@@ -21,6 +21,7 @@ class Matrix{
         Matrix operator-(Matrix const m1);
         Matrix operator*(Matrix const m1);
         Matrix operator/(Matrix const m1);
+        Matrix operator()(int column, int row);
 
 };
 

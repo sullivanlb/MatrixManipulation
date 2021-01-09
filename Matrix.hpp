@@ -14,8 +14,8 @@ class Matrix{
         Matrix(Matrix const &m1) = default;
         Matrix(int const nbColumn, int const nbRow) noexcept;
         int getDimension() const;
-        int* getColumn(int const column);
-        int* getRow(int const row);
+        int* getColumn(int const column) const;
+        int* getRow(int const row) const;
 
         friend Matrix operator+(Matrix const & m1, Matrix const & m2);
         friend Matrix operator-(Matrix const & m1, Matrix const & m2);

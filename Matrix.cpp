@@ -72,18 +72,17 @@ Matrix operator*(Matrix const & m1, Matrix const & m2)
 
     Matrix ret {m1.m_nbRow, m2.m_nbColumn};
 
-    int index = 0;
     for (int i {0}; i < (m1.m_nbRow * m2.m_nbColumn); i++)
     {
-
         int operation {0};
         for (int j {0}; j < m1.m_nbColumn - 1; j++)
         {
-            for (int k {0}; k < m1.m_nbRow - 1; k++)
+            for (int k {0}; k < m1.m_nbColumn - 1; k++)
             {
-                
+                operation =+ m1.m_values[k * m1.m_nbRow + j] * m2.m_values[j * m2.m_nbRow + k];
             }
         }
+        ret.m_values[i] = operation;
 
     }
 }

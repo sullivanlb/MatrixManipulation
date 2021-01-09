@@ -16,7 +16,7 @@ int Matrix::getDimension() const
     return m_nbColumn * m_nbRow;
 }
 
-int* Matrix::getColumn(int const column)
+int* Matrix::getColumn(int const column) const
 {
     int* columnVector {new int[m_nbRow]};
     int index = column * m_nbRow;
@@ -29,7 +29,7 @@ int* Matrix::getColumn(int const column)
 }
 
 
-int* Matrix::getRow(int const row)
+int* Matrix::getRow(int const row) const
 {
     int* rowVector {new int[m_nbColumn]};
 
@@ -72,17 +72,22 @@ Matrix operator*(Matrix const & m1, Matrix const & m2)
 
     Matrix ret {m1.m_nbRow, m2.m_nbColumn};
 
-    for (int i {0}; i < (m1.m_nbRow * m2.m_nbColumn); i++)
+    int index {0};
+    for (int i {0}; i < m2.m_nbColumn - 1; i++)
     {
-        int operation {0};
-        for (int j {0}; j < m1.m_nbColumn - 1; j++)
+        for (int j {0}; j < m1.m_nbRow - 1; j++)
         {
-            for (int k {0}; k < m1.m_nbColumn - 1; k++)
-            {
-                operation =+ m1.m_values[k * m1.m_nbRow + j] * m2.m_values[j * m2.m_nbRow + k];
-            }
-        }
-        ret.m_values[i] = operation;
+            int* row = m1.getRow(j);
+            int* column = m2.getColumn(i);
 
+            int total {0};
+            for (int k {0}; k < sizeof(row); k++)
+            {
+                row[k] *= column[k];
+                total += row[k];
+            }
+            ret.m_values[index] = total;
+            index++;
+        }
     }
 }

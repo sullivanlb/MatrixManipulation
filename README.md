@@ -5,7 +5,7 @@ Operations :
  - Create a matrix
  - Copy a matrix
  - Access to a matrix element (both in reading and writing)
- - Addition, Subtraction, Multiplication, Division 
+ - Addition, Subtraction, Multiplication 
  - Get the dimensions of the matrix
  - Display a matrix
  - Extract a specific row or column

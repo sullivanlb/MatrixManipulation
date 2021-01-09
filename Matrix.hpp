@@ -2,6 +2,8 @@
 #define MATRIX_HPP
 
 #include <iostream>
+#include <string>
+#include <cassert>
 
 class Matrix{
     private:
@@ -16,14 +18,15 @@ class Matrix{
         int getDimension() const;
         int* getColumn(int const column) const;
         int* getRow(int const row) const;
+        int nbRow() const noexcept;
+        int nbColumn()const noexcept;
 
         friend Matrix operator+(Matrix const & m1, Matrix const & m2);
         friend Matrix operator-(Matrix const & m1, Matrix const & m2);
         friend Matrix operator*(Matrix const & m1, Matrix const & m2);
         friend Matrix operator*(Matrix const & m1, int value);
-        friend Matrix operator/(Matrix const & m1, Matrix const & m2);
-        Matrix operator()(int column, int row);
-        Matrix operator<<(Matrix const & m1);
+        int& operator()(int column, int row) const ;
+        friend std::ostream& operator<<(std::ostream & stream, Matrix const & m1);
 
 };
 

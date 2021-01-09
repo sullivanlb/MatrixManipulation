@@ -1,8 +1,5 @@
 #include "Matrix.hpp"
 
-#include <cassert>
-#include <array>
-
 Matrix::Matrix(int const nbColumn, int const nbRow) noexcept: m_nbColumn(nbColumn), m_nbRow(nbRow) 
 {
     assert(nbColumn > 0);
@@ -90,4 +87,47 @@ Matrix operator*(Matrix const & m1, Matrix const & m2)
             index++;
         }
     }
+
+    return ret;
+}
+
+Matrix operator*(Matrix const & m1, int value)
+{
+    Matrix ret {m1.m_nbRow, m1.m_nbColumn};
+
+    for (int i {0}; i < (m1.m_nbRow * m1.m_nbColumn); i++)
+    {
+        ret.m_values[i] = m1.m_values[i] * value;
+    }
+
+    return ret;
+}
+
+int& Matrix::operator()(int column, int row) const
+{
+    return m_values[column * m_nbRow + row];
+}
+
+std::ostream& operator<<(std::ostream & stream, Matrix const & m1)
+{
+
+    for (int i {0}; i < m1.m_nbRow; i++)
+    {
+        for (int j {0}; j < m1.m_nbColumn; j++)
+        {
+            stream << m1.m_values[j * m1.m_nbRow + i] + ", ";
+        }
+        stream << "\r\n";
+    }
+    stream << ")";
+}
+
+int Matrix::nbRow() const noexcept
+{
+    return m_nbRow;
+}
+
+int Matrix::nbColumn() const noexcept
+{
+    return m_nbColumn;
 }

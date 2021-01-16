@@ -27,12 +27,14 @@ void test_addition()
     result(1, 2) = 7;
 
     Matrix const addition { m1 + m2 };
+    std::cout << addition << std::endl;
+    std::cout << result << std::endl;
 
-    assert(addition.nbRow() == result.nbRow() && "The addition isn't correct.");
-    assert(addition.nbColumn() == result.nbColumn() && "The addition isn't correct.");
-    for (int i { 0 }; i < addition.nbRow(); ++i)
+    assert(addition.nb_row() == result.nb_row() && "The addition isn't correct.");
+    assert(addition.nb_column() == result.nb_column() && "The addition isn't correct.");
+    for (int i { 0 }; i < addition.nb_row(); ++i)
     {
-        for (int j { 0 }; j < addition.nbColumn(); ++j)
+        for (int j { 0 }; j < addition.nb_column(); ++j)
         {
             assert(result(i, j) == addition(i, j) && "The addition isn't correct.");
         }
@@ -59,11 +61,11 @@ void test_multiplication_integer()
 
     Matrix const multiplication { m1 * 2 };
 
-    assert(result.nbRow() == multiplication.nbRow() && "The multiplication by an integer isn't correct.");
-    assert(result.nbColumn() == multiplication.nbColumn() && "The multiplication by an integer isn't correct.");
-    for (int i { 0 }; i < multiplication.nbRow(); ++i)
+    assert(result.nb_row() == multiplication.nb_row() && "The multiplication by an integer isn't correct.");
+    assert(result.nb_column() == multiplication.nb_column() && "The multiplication by an integer isn't correct.");
+    for (int i { 0 }; i < multiplication.nb_row(); ++i)
     {
-        for (int j { 0 }; j < multiplication.nbColumn(); ++j)
+        for (int j { 0 }; j < multiplication.nb_column(); ++j)
         {
             assert(result(i, j) == multiplication(i, j) && "The multiplication by an integer isn't correct.");
         }
@@ -96,11 +98,11 @@ void test_multiplication_Matrix()
 
     Matrix const multiplication { m1 * m2 };
 
-    assert(result.nbRow() == multiplication.nbRow() && "The multiplication by a Matrix isn't correct.");
-    assert(result.nbColumn() == multiplication.nbColumn() && "The multiplication by a Matrix isn't correct.");
-    for (int i { 0 }; i < multiplication.nbRow(); ++i)
+    assert(result.nb_row() == multiplication.nb_row() && "The multiplication by a Matrix isn't correct.");
+    assert(result.nb_column() == multiplication.nb_column() && "The multiplication by a Matrix isn't correct.");
+    for (int i { 0 }; i < multiplication.nb_row(); ++i)
     {
-        for (int j { 0 }; j < multiplication.nbColumn(); ++j)
+        for (int j { 0 }; j < multiplication.nb_column(); ++j)
         {
             assert(result(i, j) == multiplication(i, j) && "The multiplication by a Matrix isn't correct.");
         }
@@ -128,10 +130,15 @@ void test_toString()
 
 int main()
 {
+    std::cout << "begin test..." << std::endl;
     test_addition();
+    std::cout << "addition passed" << std::endl;
     test_multiplication_integer();
+    std::cout << "addition multiplication by int passed" << std::endl;
     test_multiplication_Matrix();
+    std::cout << "addition multiplication by matrix passed" << std::endl;
     test_toString();
+    std::cout << "toString passe" << std::endl;
 
     return 0;
 }
